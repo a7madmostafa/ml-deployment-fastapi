@@ -1,29 +1,30 @@
+
 import React, { useState } from "react";
 
 export default function App() {
   const [formData, setFormData] = useState({
-    gender: "Female",
+    gender: "female",
     seniorcitizen: 0,
-    partner: "Yes",
-    dependents: "No",
-    phoneservice: "Yes",
-    multiplelines: "No",
-    internetservice: "DSL",
-    onlinesecurity: "No",
-    onlinebackup: "No",
-    deviceprotection: "No",
-    techsupport: "No",
-    streamingtv: "No",
-    streamingmovies: "No",
-    contract: "Month-to-month",
-    paperlessbilling: "Yes",
-    paymentmethod: "Electronic check",
+    partner: "yes",
+    dependents: "no",
+    phoneservice: "yes",
+    multiplelines: "no",
+    internetservice: "dsl",
+    onlinesecurity: "no",
+    onlinebackup: "no",
+    deviceprotection: "no",
+    techsupport: "no",
+    streamingtv: "no",
+    streamingmovies: "no",
+    contract: "month-to-month",
+    paperlessbilling: "yes",
+    paymentmethod: "electronic_check",
     tenure: 12,
     monthlycharges: 70,
     totalcharges: 840,
   });
 
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,17 +40,15 @@ export default function App() {
         "https://ml-deployment-fastapi-production.up.railway.app/predict",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
         }
       );
 
       const data = await response.json();
-      setResult(JSON.stringify(data, null, 2));
+      setResult(data);
     } catch (error) {
-      setResult("Error: " + error.message);
+      setResult({ error: "Error: " + error.message });
     }
   };
 
@@ -67,8 +66,8 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>Female</option>
-            <option>Male</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
           </select>
         </div>
 
@@ -95,8 +94,8 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>Yes</option>
-            <option>No</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
           </select>
         </div>
 
@@ -109,8 +108,8 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>Yes</option>
-            <option>No</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
           </select>
         </div>
 
@@ -123,8 +122,8 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>Yes</option>
-            <option>No</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
           </select>
         </div>
 
@@ -137,9 +136,9 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>No</option>
-            <option>Yes</option>
-            <option>No phone service</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+            <option value="no_phone_service">No phone service</option>
           </select>
         </div>
 
@@ -152,9 +151,9 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>DSL</option>
-            <option>Fiber optic</option>
-            <option>No</option>
+            <option value="dsl">DSL</option>
+            <option value="fiber_optic">Fiber optic</option>
+            <option value="no">No</option>
           </select>
         </div>
 
@@ -167,9 +166,9 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>No</option>
-            <option>Yes</option>
-            <option>No internet service</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+            <option value="no_internet_service">No internet service</option>
           </select>
         </div>
 
@@ -182,9 +181,9 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>No</option>
-            <option>Yes</option>
-            <option>No internet service</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+            <option value="no_internet_service">No internet service</option>
           </select>
         </div>
 
@@ -197,9 +196,9 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>No</option>
-            <option>Yes</option>
-            <option>No internet service</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+            <option value="no_internet_service">No internet service</option>
           </select>
         </div>
 
@@ -212,9 +211,9 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>No</option>
-            <option>Yes</option>
-            <option>No internet service</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+            <option value="no_internet_service">No internet service</option>
           </select>
         </div>
 
@@ -227,9 +226,9 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>No</option>
-            <option>Yes</option>
-            <option>No internet service</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+            <option value="no_internet_service">No internet service</option>
           </select>
         </div>
 
@@ -242,9 +241,9 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>No</option>
-            <option>Yes</option>
-            <option>No internet service</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+            <option value="no_internet_service">No internet service</option>
           </select>
         </div>
 
@@ -257,9 +256,9 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>Month-to-month</option>
-            <option>One year</option>
-            <option>Two year</option>
+            <option value="month-to-month">Month-to-month</option>
+            <option value="one_year">One year</option>
+            <option value="two_year">Two year</option>
           </select>
         </div>
 
@@ -272,8 +271,8 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>Yes</option>
-            <option>No</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
           </select>
         </div>
 
@@ -286,10 +285,14 @@ export default function App() {
             onChange={handleChange}
             className="w-full border rounded p-2"
           >
-            <option>Electronic check</option>
-            <option>Mailed check</option>
-            <option>Bank transfer (automatic)</option>
-            <option>Credit card (automatic)</option>
+            <option value="electronic_check">Electronic check</option>
+            <option value="mailed_check">Mailed check</option>
+            <option value="bank_transfer_(automatic)">
+              Bank transfer (automatic)
+            </option>
+            <option value="credit_card_(automatic)">
+              Credit card (automatic)
+            </option>
           </select>
         </div>
 
@@ -338,8 +341,19 @@ export default function App() {
       </button>
 
       {result && (
-        <div className="mt-6 w-full max-w-2xl bg-gray-800 text-green-300 p-4 rounded-lg font-mono text-sm">
-          <pre>{result}</pre>
+        <div className="mt-6 w-full max-w-2xl bg-gray-800 text-green-300 p-4 rounded-lg text-sm">
+          {result.error ? (
+            <p>{result.error}</p>
+          ) : (
+            <>
+              <p className="mb-2">
+                <span className="font-bold">Churn Probability:</span> {(result.churn_probability * 100).toFixed(2)}%
+              </p>
+              <p>
+                <span className="font-bold">Will Churn:</span> {result.churn ? 'Yes' : 'No'}
+              </p>
+            </>
+          )}
         </div>
       )}
     </div>

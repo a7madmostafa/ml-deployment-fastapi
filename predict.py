@@ -5,6 +5,7 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 
+
 class Customer(BaseModel):
     gender: Literal["male", "female"]
     seniorcitizen: Literal[0, 1]
@@ -45,6 +46,16 @@ def predict_single(customer):
     return float(result)
 
 app = FastAPI(title="customer-churn-prediction")
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or specify ["http://localhost:3000"] in dev
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/predict")
 def predict(customer: Customer) -> PredictResponse:

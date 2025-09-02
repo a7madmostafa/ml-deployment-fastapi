@@ -1,12 +1,13 @@
 import requests
 
-url = 'http://localhost:9696/predict'
+# url = 'http://localhost:9696/predict'
+url ='https://ml-deployment-fastapi-production.up.railway.app/predict'
 
 customer = {
     'gender': 'female',
     'seniorcitizen': 1,
     'partner': 'yes',
-    'dependents': 'no',
+    'dependents': 'yes',
     'phoneservice': 'no',
     'multiplelines': 'no_phone_service',
     'internetservice': 'dsl',
@@ -19,9 +20,9 @@ customer = {
     'contract': 'month-to-month',
     'paperlessbilling': 'yes',
     'paymentmethod': 'electronic_check',
-    'tenure': 1,
+    'tenure': 15,
     'monthlycharges': 29.85,
-    'totalcharges': 29.85
+    'totalcharges': 550
 }
 
 response = requests.post(url, json=customer)
